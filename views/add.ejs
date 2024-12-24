@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+</head>
+<body>
+    <h1>Add New Student</h1>
+
+    <!-- النموذج المستخدم لإرسال البيانات -->
+    <form action="http://localhost:5000/api/students/students" method="POST">
+        <label for="FirstName">First Name:</label>
+        <input type="text" name="FirstName" required><br>
+
+        <label for="LastName">Last Name:</label>
+        <input type="text" name="LastName" required><br>
+
+        <label for="Street">Street:</label>
+        <input type="text" name="Street" required><br>
+
+        <label for="Government">Government:</label>
+        <input type="text" name="Government" required><br>
+
+        <label for="PhoneNumber">Phone Number:</label>
+        <input type="text" name="PhoneNumber" required><br>
+
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" required><br>
+
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <button onclick="window.location.href='/students'">Back to Student List</button>
+</body>
+</html>

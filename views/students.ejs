@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+<body>
+    <h1>List of Students</h1>
+
+    <!-- Form to add a new student -->
+    <h2>Add New Student</h2>
+    <form action="/students" method="POST">
+        <label for="FirstName">First Name:</label>
+        <input type="text" name="FirstName" value="<%= student.FirstName %>" required><br>
+      
+        <label for="LastName">Last Name:</label>
+        <input type="text" name="LastName" value="<%= student.LastName %>" required><br>
+      
+        <label for="Street">Street:</label>
+        <input type="text" name="Street" value="<%= student.Street %>" required><br>
+      
+        <label for="Government">Government:</label>
+        <input type="text" name="Government" value="<%= student.Government %>" required><br>
+      
+        <label for="PhoneNumber">Phone Number:</label>
+        <input type="text" name="PhoneNumber" value="<%= student.PhoneNumber %>" required><br>
+      
+        <label for="Email">Email:</label>
+        <input type="email" name="Email" value="<%= student.Email %>" required><br>
+      
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+          <option value="Male" <%= student.Gender === 'Male' ? 'selected' : '' %>>Male</option>
+          <option value="Female" <%= student.Gender === 'Female' ? 'selected' : '' %>>Female</option>
+        </select><br>
+      
+        <button type="submit">Add Student</button>
+    </form>
+
+    <!-- Display students list -->
+    <h2>Students List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Street</th>
+                <th>Government</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student => { %>
+                <tr>
+                    <td><%= student.FirstName %></td>
+                    <td><%= student.LastName %></td>
+                    <td><%= student.Street %></td>
+                    <td><%= student.Government %></td>
+                    <td><%= student.PhoneNumber %></td>
+                    <td><%= student.Email %></td>
+                    <td><%= student.Gender %></td>
+                    <td>
+                        <!-- Link to Edit Student -->
+                        <a href="/students/edit/<%= student.StudentID %>">Edit</a> |
+                        <!-- Link to Delete Student -->
+                        <a href="/students/delete/<%= student.StudentID %>" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+</body>
+</html>
